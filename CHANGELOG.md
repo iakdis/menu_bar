@@ -1,3 +1,7 @@
+## 0.4.1
+
+- Update README
+
 ## 0.4.0
 
 - Fix breaking: Conflict between MenuBar and MenuStyle in material package
