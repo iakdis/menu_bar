@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart' hide MenuBar hide MenuStyle;
+import 'package:flutter/material.dart' hide MenuStyle;
 import 'package:menu_bar/menu_bar.dart';
 
 void main() {
@@ -166,7 +166,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: MenuBar(
+      home: MenuBarWidget(
         // Add a list of [MenuButton]. The buttons in this List are
         // displayed as the buttons on the bar itself
         barButtons: _menuBarButtons(),

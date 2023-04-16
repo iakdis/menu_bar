@@ -26,7 +26,7 @@ class BarButton extends MenuBarEntryMenu {
   ///
   /// Assign a SubMenu to the [submenu] field. This submenu is the menu that is opened on when tapping this button.
   ///
-  /// You can style the [BarButton] widgets in the `barButtonStyle` field of your MenuBar widget.
+  /// You can style the [BarButton] widgets in the `barButtonStyle` field of your MenuBarWidget.
   const BarButton({
     super.key,
     required Widget text,

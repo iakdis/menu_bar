@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart' hide MenuBar hide MenuStyle;
+import 'package:flutter/material.dart' hide MenuStyle;
 import '../menu_bar.dart';
 
 class BarStyle {
@@ -35,17 +35,17 @@ class BarButtonStyle {
   final EdgeInsets padding;
 }
 
-class MenuBar extends StatelessWidget {
+class MenuBarWidget extends StatelessWidget {
   /// Hover over each field for more details.
   ///
-  /// **Create the [MenuBar]:**
+  /// **Create the [MenuBarWidget]:**
   ///
   /// The following 2 fields are necessary: [child] and [barButtons].
   ///
-  /// The [MenuBar] is wrapped around a [child], i.e. your application under the [MenuBar].
+  /// The [MenuBarWidget] contains a [child], i.e. your application under the [MenuBarWidget].
   /// For the [barButtons] field, implement a List of [BarButton]. The buttons in this List are displayed as the buttons on the bar.
   ///
-  /// **Style the [MenuBar]:**
+  /// **Style the [MenuBarWidget]:**
   ///
   /// The bar itself: Implement your custom [barStyle].
   ///
@@ -55,7 +55,7 @@ class MenuBar extends StatelessWidget {
   ///
   /// Menu and submenu buttons: Implement your custom [menuButtonStyle].
 
-  const MenuBar({
+  const MenuBarWidget({
     super.key,
     required this.child,
     required this.barButtons,
@@ -66,7 +66,7 @@ class MenuBar extends StatelessWidget {
     this.enabled = true,
   });
 
-  /// The [MenuBar] is wrapped around a [child], i.e. your application under the [MenuBar].
+  /// The [MenuBarWidget] contains a [child], i.e. your application under the [MenuBarWidget].
   final Widget child;
 
   /// List of [BarButton]. The buttons in this List are displayed as the buttons on the bar itself.

@@ -38,9 +38,9 @@ class MenuButton extends MenuEntry {
   ///
   /// To display a leading icon, assign an Icon widget to the [icon] field.
   ///
-  /// To display a trailing shortcut text, assign a String to the [shortcutText] field. This is just a text, not a Shortcut system. You can style this text in the `menuButtonStyle` of your MenuBar widget (field: `shortcutTextStyle`).
+  /// To display a trailing shortcut text, assign a String to the [shortcutText] field. This is just a text, not a Shortcut system. You can style this text in the `menuButtonStyle` of your MenuBarWidget (field: `shortcutTextStyle`).
   ///
-  /// You can style the [MenuButton] widgets in the `menuButtonStyle` field of your MenuBar widget.
+  /// You can style the [MenuButton] widgets in the `menuButtonStyle` field of your MenuBarWidget.
   const MenuButton({
     /// Assign a Text widget to the [text] field. This text is displayed as the button text. You can also wrap your assigned Text around a Padding widget.
     required super.onTap,

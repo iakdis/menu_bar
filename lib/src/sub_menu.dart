@@ -8,7 +8,7 @@ class SubMenu extends MenuBarEntryMenu {
   ///
   /// Assign a List of either [MenuButton] or [MenuDivider] widgets to the [menuItems] field. The List should contain at least one item.
   ///
-  /// You can style the [SubMenu] widgets in the `menuStyle` field of your MenuBar widget.
+  /// You can style the [SubMenu] widgets in the `menuStyle` field of your MenuBarWidget.
   const SubMenu({
     super.key,
     required List<MenuEntry> menuItems,
