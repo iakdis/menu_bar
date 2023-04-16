@@ -11,3 +11,4 @@ pubspec.lock
 
 # Custom
 .vscode/
+linux/
