@@ -1,4 +1,5 @@
-import 'package:flutter/material.dart' hide MenuStyle;
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:menu_bar/menu_bar.dart';
 
 void main() {
@@ -23,9 +24,11 @@ class _MyHomePageState extends State<MyHomePage> {
         submenu: SubMenu(
           menuItems: [
             MenuButton(
-              onTap: () {},
+              onTap: () => print('Save'),
               text: const Text('Save'),
               shortcutText: 'Ctrl+S',
+              shortcut:
+                  const SingleActivator(LogicalKeyboardKey.keyS, control: true),
             ),
             MenuButton(
               onTap: () {},
@@ -44,7 +47,6 @@ class _MyHomePageState extends State<MyHomePage> {
             const MenuDivider(),
             MenuButton(
               text: const Text('Preferences'),
-              onTap: () {},
               icon: const Icon(Icons.settings),
               submenu: SubMenu(
                 menuItems: [
@@ -61,7 +63,6 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                   const MenuDivider(),
                   MenuButton(
-                    onTap: () {},
                     icon: const Icon(Icons.looks),
                     text: const Text('Change theme'),
                     submenu: SubMenu(
@@ -167,21 +168,28 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: MenuBarWidget(
-        // Add a list of [MenuButton]. The buttons in this List are
+        // Add a list of [BarButton]. The buttons in this List are
         // displayed as the buttons on the bar itself
         barButtons: _menuBarButtons(),
 
-        // Style the menu bar itself. Hover over BarStyle for all the options
-        barStyle: const BarStyle(),
+        // Style the menu bar itself. Hover over [MenuStyle] for all the options
+        barStyle: const MenuStyle(
+          padding: MaterialStatePropertyAll(EdgeInsets.zero),
+          backgroundColor: MaterialStatePropertyAll(Color(0xFF2b2b2b)),
+          maximumSize: MaterialStatePropertyAll(Size(double.infinity, 28.0)),
+        ),
 
-        // Style the menu bar buttons. Hover over BarButtonStyle for all the options
-        barButtonStyle: const BarButtonStyle(),
+        // Style the menu bar buttons. Hover over [ButtonStyle] for all the options
+        barButtonStyle: const ButtonStyle(
+          padding:
+              MaterialStatePropertyAll(EdgeInsets.symmetric(horizontal: 6.0)),
+          minimumSize: MaterialStatePropertyAll(Size(0.0, 32.0)),
+        ),
 
-        // Style the menus and submenus. Hover over MenuStyle for all the options
-        menuStyle: const MenuStyle(),
-
-        // Style the menu and submenu buttons. Hover over MenuButtonStyle for all the options
-        menuButtonStyle: const MenuButtonStyle(),
+        // Style the menu and submenu buttons. Hover over [ButtonStyle] for all the options
+        menuButtonStyle: const ButtonStyle(
+          minimumSize: MaterialStatePropertyAll(Size.fromHeight(28.0)),
+        ),
 
         // Enable or disable the bar
         enabled: true,
