@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
 import '../menu_bar.dart';
 
+enum MenuEntryType {
+  BarButton,
+  MenuButton,
+  MenuDivider,
+}
+
 class MenuEntry {
   const MenuEntry({
     required this.onTap,
