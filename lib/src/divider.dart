@@ -12,13 +12,17 @@ class MenuDivider extends MenuEntry {
     double? endIndent,
     Color? color,
   }) : super(
-          divider: true,
+          menuEntryType: MenuEntryType.MenuDivider,
           height: height,
           thickness: thickness,
           indent: indent,
           endIndent: endIndent,
           color: color,
-          onTap: null,
           text: null,
+          icon: null,
+          shortcut: null,
+          shortcutText: null,
+          onTap: null,
+          submenu: null,
         );
 }
