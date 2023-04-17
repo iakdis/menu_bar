@@ -1,52 +1,57 @@
 import 'package:flutter/material.dart';
+
+import '../menu_bar.dart';
 import 'entry.dart';
 
-class MenuButtonStyle {
-  /// Style the menu and submenu buttons by implementing a custom [MenuButtonStyle].
-  const MenuButtonStyle({
-    this.closeMenuOnClick = true,
-    this.backgroundColor = Colors.white,
-    this.height = 28.0,
-    this.padding = const EdgeInsets.symmetric(horizontal: 12.0),
-    this.shortcutTextStyle =
-        const TextStyle(fontSize: 15.0, color: Colors.grey),
-    this.showSubmenuIcon = true,
-    this.submenuIcon = const Icon(Icons.keyboard_arrow_right),
-  });
-
-  final bool closeMenuOnClick;
-  final Color backgroundColor;
-  final double height;
-  final EdgeInsets padding;
-  final TextStyle shortcutTextStyle;
-  final bool showSubmenuIcon;
-  final Widget submenuIcon;
+class BarButton extends MenuEntry {
+  /// A [BarButton] is displayed as a button in the bar.
+  ///
+  /// The following 2 fields are necessary: [text] and [submenu].
+  ///
+  /// Assign a widget to the [text] field. This text is displayed as the button text, for example "File", "Edit", "Help", etc.
+  ///
+  /// Assign a SubMenu to the [submenu] field. This submenu is the menu that is opened on when tapping this button.
+  ///
+  /// You can style the [BarButton] widgets in the `barButtonStyle` field of your MenuBarWidget.
+  const BarButton({
+    required Widget text,
+    required SubMenu submenu,
+  }) : super(
+          menuEntryType: MenuEntryType.BarButton,
+          text: text,
+          submenu: submenu,
+        );
 }
 
 class MenuButton extends MenuEntry {
   /// A [MenuButton] is displayed as a button in the menus and submenus.
   ///
-  /// The following 2 fields are necessary: [onTap] and [text].
-  ///
-  /// Assign a Function to the [onTap] field. This function will be executed when pressing the button. Set to `null` to disable the button. Though keep in mind to implement a custom solution for disabled colors in case you want disabled colors.
+  /// The following field is necessary: [text].
   ///
   /// Assign a Text widget to the [text] field. This text is displayed as the button text. You can also wrap your assigned Text around a Padding widget.
   ///
   /// **Optional fields**
   ///
-  /// To open a submenu on press, assign a SubMenu widget to the [submenu] field. You can now set the [onTap] field to an empty function `() {}` if you don't want to execute a function when opening and closing the submenu.
+  /// To open a submenu on press, assign a SubMenu widget to the [submenu] field. **IMPORTANT**: The [onTap] field has to be `null` if [submenu] is set.
   ///
   /// To display a leading icon, assign an Icon widget to the [icon] field.
   ///
-  /// To display a trailing shortcut text, assign a String to the [shortcutText] field. This is just a text, not a Shortcut system. You can style this text in the `menuButtonStyle` of your MenuBarWidget (field: `shortcutTextStyle`).
+  /// To trigger the [onTap] with a keyboard shortcut, assign a `MenuSerializableShortcut` to the [shortcut] field. For example: `SingleActivator(LogicalKeyboardKey.keyS, control: true)`
+  ///
+  /// To display a trailing shortcut text, assign a String to the [shortcutText] field. You can style this text in the `shortcutTextStyle` field.
   ///
   /// You can style the [MenuButton] widgets in the `menuButtonStyle` field of your MenuBarWidget.
   const MenuButton({
-    /// Assign a Text widget to the [text] field. This text is displayed as the button text. You can also wrap your assigned Text around a Padding widget.
-    required super.onTap,
     required Widget text,
-    super.icon,
-    super.shortcutText,
+    super.onTap,
     super.submenu,
-  }) : super(text: text);
+    super.icon,
+    super.shortcut,
+    super.shortcutText,
+    TextStyle shortcutStyle =
+        const TextStyle(fontWeight: FontWeight.normal, color: Colors.grey),
+  }) : super(
+            menuEntryType: MenuEntryType.MenuButton,
+            text: text,
+            shortcutStyle: shortcutStyle);
 }
