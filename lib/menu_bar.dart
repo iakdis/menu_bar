@@ -2,7 +2,6 @@
 library menu_bar;
 
 export 'src/bar.dart';
-export 'src/menu.dart';
 export 'src/sub_menu.dart';
 export 'src/button.dart';
 export 'src/divider.dart';
