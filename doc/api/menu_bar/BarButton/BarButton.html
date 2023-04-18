@@ -54,9 +54,9 @@
     <a href="https://dart.dev/null-safety" class="feature feature-null-safety" title="Supports the null safety language feature.">Null safety</a>
 </h1></div>
 
-    <section class="multi-line-signature">const
-      <span class="name ">BarButton</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="-param-key">{<span class="type-annotation"><a href="https://api.flutter.dev/flutter/foundation/Key-class.html">Key</a>?</span> <span class="parameter-name">key</span>, </span></li>
-<li><span class="parameter" id="-param-text"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/widgets/Widget-class.html">Widget</a></span> <span class="parameter-name">text</span>, </span></li>
+    <section class="multi-line-signature">
+      const
+      <span class="name ">BarButton</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="-param-text">{<span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/widgets/Widget-class.html">Widget</a></span> <span class="parameter-name">text</span>, </span></li>
 <li><span class="parameter" id="-param-submenu"><span>required</span> <span class="type-annotation"><a href="../../menu_bar/SubMenu-class.html">SubMenu</a></span> <span class="parameter-name">submenu</span>}</span></li>
 </ol>)
     </section>
@@ -65,9 +65,9 @@
 <section class="desc markdown">
   <p>A <a href="../../menu_bar/BarButton-class.html">BarButton</a> is displayed as a button in the bar.</p>
 <p>The following 2 fields are necessary: <code>text</code> and <code>submenu</code>.</p>
-<p>Assign a Text widget to the <code>text</code> field. This text is displayed as the button text, for example "File", "Edit", "Help", etc.</p>
+<p>Assign a widget to the <code>text</code> field. This text is displayed as the button text, for example "File", "Edit", "Help", etc.</p>
 <p>Assign a SubMenu to the <code>submenu</code> field. This submenu is the menu that is opened on when tapping this button.</p>
-<p>You can style the <a href="../../menu_bar/BarButton-class.html">BarButton</a> widgets in the <code>barButtonStyle</code> field of your MenuBar widget.</p>
+<p>You can style the <a href="../../menu_bar/BarButton-class.html">BarButton</a> widgets in the <code>barButtonStyle</code> field of your MenuBarWidget.</p>
 </section>
 
 
@@ -75,10 +75,13 @@
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">const BarButton({
-  super.key,
   required Widget text,
   required SubMenu submenu,
-}) : super(text: text, submenu: submenu, menuItems: null);</code></pre>
+}) : super(
+        menuEntryType: MenuEntryType.BarButton,
+        text: text,
+        submenu: submenu,
+      );</code></pre>
 </section>
 
 
@@ -109,36 +112,28 @@
         <li class="section-title inherited">
           <a href="../../menu_bar/BarButton-class.html#instance-properties">Properties</a>
         </li>
-          <li class="inherited"><a href="../../menu_bar/MenuBarEntryMenu/backgroundColor.html">backgroundColor</a></li>
-          <li class="inherited"><a href="../../menu_bar/MenuBarEntryMenu/closeOnHoverDelay.html">closeOnHoverDelay</a></li>
-          <li class="inherited"><a href="../../menu_bar/MenuBarEntryMenu/closeOnHoverLeave.html">closeOnHoverLeave</a></li>
-          <li class="inherited"><a href="https://api.flutter.dev/flutter/widgets/Widget/hashCode.html">hashCode</a></li>
-          <li class="inherited"><a href="https://api.flutter.dev/flutter/widgets/Widget/key.html">key</a></li>
-          <li class="inherited"><a href="../../menu_bar/MenuBarEntryMenu/menuBarButtonStyle.html">menuBarButtonStyle</a></li>
-          <li class="inherited"><a href="../../menu_bar/MenuBarEntryMenu/menuButtonStyle.html">menuButtonStyle</a></li>
-          <li class="inherited"><a href="../../menu_bar/MenuBarEntryMenu/menuItems.html">menuItems</a></li>
-          <li class="inherited"><a href="../../menu_bar/MenuBarEntryMenu/openMenusOnHover.html">openMenusOnHover</a></li>
-          <li class="inherited"><a href="../../menu_bar/MenuBarEntryMenu/openSubmenusOnHover.html">openSubmenusOnHover</a></li>
-          <li class="inherited"><a href="../../menu_bar/MenuBarEntryMenu/padding.html">padding</a></li>
+          <li class="inherited"><a href="../../menu_bar/BarButton/color.html">color</a></li>
+          <li class="inherited"><a href="../../menu_bar/BarButton/endIndent.html">endIndent</a></li>
+          <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/hashCode.html">hashCode</a></li>
+          <li class="inherited"><a href="../../menu_bar/BarButton/height.html">height</a></li>
+          <li class="inherited"><a href="../../menu_bar/BarButton/icon.html">icon</a></li>
+          <li class="inherited"><a href="../../menu_bar/BarButton/indent.html">indent</a></li>
+          <li class="inherited"><a href="../../menu_bar/BarButton/menuEntryType.html">menuEntryType</a></li>
+          <li class="inherited"><a href="../../menu_bar/BarButton/onTap.html">onTap</a></li>
           <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></li>
-          <li class="inherited"><a href="../../menu_bar/MenuBarEntryMenu/submenu.html">submenu</a></li>
-          <li class="inherited"><a href="../../menu_bar/MenuBarEntryMenu/text.html">text</a></li>
-          <li class="inherited"><a href="../../menu_bar/MenuBarEntryMenu/width.html">width</a></li>
+          <li class="inherited"><a href="../../menu_bar/BarButton/shortcut.html">shortcut</a></li>
+          <li class="inherited"><a href="../../menu_bar/BarButton/shortcutStyle.html">shortcutStyle</a></li>
+          <li class="inherited"><a href="../../menu_bar/BarButton/shortcutText.html">shortcutText</a></li>
+          <li class="inherited"><a href="../../menu_bar/BarButton/submenu.html">submenu</a></li>
+          <li class="inherited"><a href="../../menu_bar/BarButton/text.html">text</a></li>
+          <li class="inherited"><a href="../../menu_bar/BarButton/thickness.html">thickness</a></li>
 
         <li class="section-title inherited"><a href="../../menu_bar/BarButton-class.html#instance-methods">Methods</a></li>
-          <li class="inherited"><a href="https://api.flutter.dev/flutter/widgets/StatefulWidget/createElement.html">createElement</a></li>
-          <li class="inherited"><a href="../../menu_bar/MenuBarEntryMenu/createState.html">createState</a></li>
-          <li class="inherited"><a href="https://api.flutter.dev/flutter/foundation/DiagnosticableTree/debugDescribeChildren.html">debugDescribeChildren</a></li>
-          <li class="inherited"><a href="https://api.flutter.dev/flutter/widgets/Widget/debugFillProperties.html">debugFillProperties</a></li>
           <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/noSuchMethod.html">noSuchMethod</a></li>
-          <li class="inherited"><a href="https://api.flutter.dev/flutter/foundation/DiagnosticableTree/toDiagnosticsNode.html">toDiagnosticsNode</a></li>
-          <li class="inherited"><a href="https://api.flutter.dev/flutter/foundation/Diagnosticable/toString.html">toString</a></li>
-          <li class="inherited"><a href="https://api.flutter.dev/flutter/foundation/DiagnosticableTree/toStringDeep.html">toStringDeep</a></li>
-          <li class="inherited"><a href="https://api.flutter.dev/flutter/foundation/DiagnosticableTree/toStringShallow.html">toStringShallow</a></li>
-          <li class="inherited"><a href="https://api.flutter.dev/flutter/widgets/Widget/toStringShort.html">toStringShort</a></li>
+          <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/toString.html">toString</a></li>
 
         <li class="section-title inherited"><a href="../../menu_bar/BarButton-class.html#operators">Operators</a></li>
-          <li class="inherited"><a href="https://api.flutter.dev/flutter/widgets/Widget/operator_equals.html">operator ==</a></li>
+          <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/operator_equals.html">operator ==</a></li>
 
 
 
@@ -155,7 +150,7 @@
 <footer>
   <span class="no-break">
     menu_bar
-      0.3.0
+      0.5.0
   </span>
 
   

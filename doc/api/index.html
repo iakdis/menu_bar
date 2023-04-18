@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
-  <meta name="generator" content="made with love by dartdoc 6.1.2">
+  <meta name="generator" content="made with love by dartdoc 6.1.5">
   <meta name="description" content="menu_bar API docs, for the Dart programming language.">
   <title>menu_bar - Dart API docs</title>
 
@@ -51,16 +51,22 @@
 <section class="desc markdown">
   <p>
   <a href="https://pub.dev/packages/menu_bar" alt="Release">
-  <img src="https://img.shields.io/pub/v/menu_bar?style=flat-square"></a>  <a href="https://github.com/iakmds/menu_bar/issues" alt="Issues">
-  <img src="https://img.shields.io/github/issues/iakmds/menu_bar?color=dfb317&amp;style=flat-square"></a>  <a href="https://github.com/iakmds/menu_bar/pulls" alt="Pull requests">
-  <img src="https://img.shields.io/github/issues-pr/iakmds/menu_bar?style=flat-square"></a>  <a href="https://github.com/iakmds/menu_bar/contributors" alt="Contributors">
-  <img src="https://img.shields.io/github/contributors/iakmds/menu_bar?style=flat-square"></a>  <a href="https://github.com/iakmds/menu_bar/network/members" alt="Forks">
-  <img src="https://img.shields.io/github/forks/iakmds/menu_bar?style=flat-square"></a>  <a href="https://github.com/iakmds/menu_bar/stargazers" alt="Stars">
-  <img src="https://img.shields.io/github/stars/iakmds/menu_bar?style=flat-square"></a>  <a href="https://github.com/iakmds/menu_bar/blob/master/LICENSE" alt="License">
+  <img src="https://img.shields.io/pub/v/menu_bar?style=flat-square"></a>
+  <a href="https://github.com/iakmds/menu_bar/issues" alt="Issues">
+  <img src="https://img.shields.io/github/issues/iakmds/menu_bar?color=dfb317&amp;style=flat-square"></a>
+  <a href="https://github.com/iakmds/menu_bar/pulls" alt="Pull requests">
+  <img src="https://img.shields.io/github/issues-pr/iakmds/menu_bar?style=flat-square"></a>
+  <a href="https://github.com/iakmds/menu_bar/contributors" alt="Contributors">
+  <img src="https://img.shields.io/github/contributors/iakmds/menu_bar?style=flat-square"></a>
+  <a href="https://github.com/iakmds/menu_bar/network/members" alt="Forks">
+  <img src="https://img.shields.io/github/forks/iakmds/menu_bar?style=flat-square"></a>
+  <a href="https://github.com/iakmds/menu_bar/stargazers" alt="Stars">
+  <img src="https://img.shields.io/github/stars/iakmds/menu_bar?style=flat-square"></a>
+  <a href="https://github.com/iakmds/menu_bar/blob/master/LICENSE" alt="License">
   <img src="https://img.shields.io/github/license/iakmds/menu_bar?style=flat-square"></a>
 </p>
 <p>A customizable application menu bar with submenus for your Flutter Desktop apps.</p>
-<p>The menu bar is rendered inside your Flutter app (i.e. not as a native menu bar like in macOS). Native menu bars (at least for macOS) are currently in development by Flutter, see <a href="https://github.com/flutter/flutter/issues/23600">#23600</a>. In the future, a native option in this plugin could get added.</p>
+<p>The menu bar is rendered inside your Flutter app (i.e. not as a native menu bar like in macOS). Native menu bars (at least for macOS) are since lately supported by Flutter. In the future, a native option in this package could get added.</p>
 <h2 id="table-of-contents">Table of Contents</h2>
 <ul>
 <li><a href="#preview">Preview</a></li>
@@ -79,6 +85,7 @@
 <li><a href="#menu-and-submenu-buttons-customization">Menu and submenu buttons</a></li>
 </ul>
 </li>
+<li><a href="#contact">Contact</a></li>
 </ul>
 <h1 id="preview">Preview</h1><img src="https://raw.githubusercontent.com/iakmds/menu_bar/master/doc/assets/preview.gif" alt="Preview GIF" width="512">
 <h1 id="features">Features</h1>
@@ -87,8 +94,9 @@
 <li>Nested submenus support</li>
 <li>Dividers to structure submenus</li>
 <li>Icon in submenu buttons (optional)</li>
+<li>Keyboard shortcuts for button functions</li>
 <li>Shortcut text in submenu buttons (optional)</li>
-<li>Open menus and submenus on hover or on click</li>
+<li>Open menus and submenus on hover</li>
 <li>Fully customizable</li>
 <li>Easy to implement</li>
 <li>Rich widget documentation</li>
@@ -98,8 +106,8 @@
 <pre class="language-dart"><code class="language-dart">import 'package:menu_bar/menu_bar.dart';
 </code></pre>
 <h2 id="1-integrate-the-menu-bar">1. Integrate the menu bar</h2>
-<p>Wrap your application around the MenuBar widget and add an empty list to <code>barButtons</code> so that you have assigned the 2 necessary fields. The <code>child</code> is your application under the menu bar:</p>
-<pre class="language-dart"><code class="language-dart">MenuBar(
+<p>Wrap your application around the MenuBarWidget widget and add an empty list to <code>barButtons</code> so that you have assigned the 2 necessary fields. The <code>child</code> is your application under the menu bar:</p>
+<pre class="language-dart"><code class="language-dart">MenuBarWidget(
     barButtons: [],
     child: Scaffold(...),
 ),
@@ -107,7 +115,7 @@
 <p>You should now see an empty menu bar above your application (see picture below). To add buttons with menus, proceed to step 2.</p><img src="https://raw.githubusercontent.com/iakmds/menu_bar/master/doc/assets/step1.png" alt="Screenshot of step 1" width="500">
 <h2 id="2-create-your-menus">2. Create your menus</h2>
 <p>To add buttons with menus, use the following widget structure:</p>
-<pre class="language-dart"><code>MenuBar
+<pre class="language-dart"><code>MenuBarWidget
     BarButton
         SubMenu
             MenuButton
@@ -120,26 +128,25 @@
             ...
 </code></pre>
 <p>In this example, we will add the following menu bar:</p><img src="https://raw.githubusercontent.com/iakmds/menu_bar/master/doc/assets/step2.png" alt="Screenshot of step 2" width="500">
-<pre class="language-dart"><code class="language-dart">return MaterialApp(
-    home: MenuBar(
-    // Add a list of [BarButton]. The buttons in this List are displayed as the buttons on the bar itself
+<pre class="language-dart"><code class="language-dart">MenuBarWidget(
+    // The buttons in this List are displayed as the buttons on the bar itself
     barButtons: [
         BarButton(
             text: const Text('File', style: TextStyle(color: Colors.white)),
             submenu: SubMenu(
                 menuItems: [
                     MenuButton(
-                        onTap: () {},
                         text: const Text('Save'),
-                        shortcutText: 'Ctrl+S',
+                        onTap: () {},
                         icon: const Icon(Icons.save),
+                        shortcutText: 'Ctrl+S',
                     ),
                     const MenuDivider(),
                     MenuButton(
-                        onTap: () {},
-                        shortcutText: 'Ctrl+Q',
                         text: const Text('Exit'),
+                        onTap: () {},
                         icon: const Icon(Icons.exit_to_app),
+                        shortcutText: 'Ctrl+Q',
                     ),
                 ],
             ),
@@ -147,41 +154,39 @@
         BarButton(
             text: const Text('Help', style: TextStyle(color: Colors.white)),
             submenu: SubMenu(
-            menuItems: [
-                MenuButton(
-                onTap: () {},
-                text: const Text('View License'),
-                ),
-                MenuButton(
-                onTap: () {},
-                icon: const Icon(Icons.info),
-                text: const Text('About'),
-                ),
-            ],
+                menuItems: [
+                    MenuButton(
+                      text: const Text('View License'),
+                      onTap: () {},
+                    ),
+                    MenuButton(
+                      text: const Text('About'),
+                      onTap: () {},
+                      icon: const Icon(Icons.info),
+                    ),
+                ],
             ),
         ),
     ],
 
     // Set the child, i.e. the application under the menu bar
     child: Scaffold(...),
-    ),
-);
+),
 </code></pre>
 <h2 id="3-customize-the-menu-bar">3. Customize the menu bar</h2>
 <p>For customization options, see <a href="#customization">#Customization</a> below or hover over the widgets for all the options in your preferred IDE when integrating the menu bar.</p>
 <p>For a complete example, check out <a href="https://github.com/iakmds/menu_bar/blob/master/example/example.dart">example.dart</a></p>
 <h1 id="customization">Customization</h1>
 <h3 id="bar-customization">Bar customization</h3><img src="https://raw.githubusercontent.com/iakmds/menu_bar/master/doc/assets/bar.png" alt="Bar" width="500">
-<table><thead><tr><th>Name</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td>height</td><td>double</td><td>28.0</td><td>Height of the menu bar</td></tr><tr><td>mainAxisAlignment</td><td>MainAxisAlignment</td><td>MainAxisAlignment.start</td><td>Horizontal alignment of the bar buttons</td></tr><tr><td>backgroundColor</td><td>Color</td><td>Color(0xFF424242)</td><td>Background color of the bar</td></tr><tr><td>gap</td><td>double</td><td>0.0</td><td>Gap between the bar buttons</td></tr><tr><td>padding</td><td>EdgeInsets</td><td>EdgeInsets.symmetric(horizontal: 0.0)</td><td>Padding inside the bar row</td></tr><tr><td>closeMenuOnHoverLeave</td><td>bool</td><td>true</td><td>Close the all menus on hover leave</td></tr><tr><td>openMenuOnHover</td><td>bool</td><td>false</td><td>Open the bar button menus on hover</td></tr><tr><td>closeMenuOnHoverDelay</td><td>Duration</td><td>Duration(milliseconds: 400)</td><td>Close duration on hover leave</td></tr></tbody></table>
+<p>See class <code>MenuStyle</code> in <a href="https://api.flutter.dev/flutter/material/MenuStyle-class.html">https://api.flutter.dev/flutter/material/MenuStyle-class.html</a>.</p>
 <hr>
 <h3 id="bar-button-customization">Bar button customization</h3><img src="https://raw.githubusercontent.com/iakmds/menu_bar/master/doc/assets/barButton.png" alt="Bar button" width="500">
-<table><thead><tr><th>Name</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td>backgroundColor</td><td>Color</td><td>Colors.transparent</td><td>Bar button background color</td></tr><tr><td>padding</td><td>EdgeInsets</td><td>EdgeInsets.symmetric(horizontal: 6.0)</td><td>Padding inside the bar buttons</td></tr></tbody></table>
-<hr>
-<h3 id="menu-and-submenu-customization">Menu and submenu customization</h3><img src="https://raw.githubusercontent.com/iakmds/menu_bar/master/doc/assets/submenu.png" alt="Submenu" width="500">
-<table><thead><tr><th>Name</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td>width</td><td>double</td><td>200.0</td><td>Width of the menus and submenus</td></tr><tr><td>openSubmenusOnHover</td><td>bool</td><td>true</td><td>Open the submenus on hover</td></tr><tr><td>backgroundColor</td><td>Color</td><td>Colors.white</td><td>Background color of the menus and submenus</td></tr><tr><td>padding</td><td>EdgeInsets</td><td>EdgeInsets.symmetric(vertical: 8.0)</td><td>Padding inside the menus and submenus</td></tr></tbody></table>
+<p>See class <code>ButtonStyle</code> in <a href="https://api.flutter.dev/flutter/material/ButtonStyle-class.html">https://api.flutter.dev/flutter/material/ButtonStyle-class.html</a>.</p>
 <hr>
 <h3 id="menu-and-submenu-buttons-customization">Menu and submenu buttons customization</h3><img src="https://raw.githubusercontent.com/iakmds/menu_bar/master/doc/assets/submenuButton.png" alt="Submenu button" width="500">
-<table><thead><tr><th>Name</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td>closeMenuOnClick</td><td>bool</td><td>true</td><td>Close the all menus on a menu button click</td></tr><tr><td>backgroundColor</td><td>Color</td><td>Colors.white</td><td>Background color of the submenu buttons</td></tr><tr><td>height</td><td>double</td><td>28.0</td><td>Height of the submenu buttons</td></tr><tr><td>padding</td><td>EdgeInsets</td><td>EdgeInsets.symmetric(horizontal: 12.0)</td><td>Padding inside the submenu buttons</td></tr><tr><td>shortcutTextStyle</td><td>TextStyle</td><td>TextStyle(fontSize: 15.0, color: Colors.grey)</td><td>Shortcut text style</td></tr><tr><td>showSubmenuIcon</td><td>bool</td><td>true</td><td>Show a submenu icon if a submenu is assigned</td></tr><tr><td>submenuIcon</td><td>Widget</td><td>Icon(Icons.keyboard_arrow_right)</td><td>Set the submenu icon if showSubmenuIcon is true and a submenu is assigned</td></tr></tbody></table>
+<p>See class <code>ButtonStyle</code> in <a href="https://api.flutter.dev/flutter/material/ButtonStyle-class.html">https://api.flutter.dev/flutter/material/ButtonStyle-class.html</a>.</p>
+<h1 id="contact">Contact</h1>
+<p>If you want to report a bug, request a feature or improve something, feel free to file an issue in the <a href="https://github.com/iakmds/menu_bar">GitHub repository</a>.</p>
 </section>
 
 
@@ -228,7 +233,7 @@
 <footer>
   <span class="no-break">
     menu_bar
-      0.3.0
+      0.5.0
   </span>
 
   

@@ -54,26 +54,29 @@
     <a href="https://dart.dev/null-safety" class="feature feature-null-safety" title="Supports the null safety language feature.">Null safety</a>
 </h1></div>
 
-    <section class="multi-line-signature">const
-      <span class="name ">MenuButton</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="-param-onTap">{<span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Function-class.html">Function</a>?</span> <span class="parameter-name">onTap</span>, </span></li>
-<li><span class="parameter" id="-param-text"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/widgets/Widget-class.html">Widget</a></span> <span class="parameter-name">text</span>, </span></li>
+    <section class="multi-line-signature">
+      const
+      <span class="name ">MenuButton</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="-param-text">{<span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/widgets/Widget-class.html">Widget</a></span> <span class="parameter-name">text</span>, </span></li>
+<li><span class="parameter" id="-param-onTap"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-ui/VoidCallback.html">VoidCallback</a>?</span> <span class="parameter-name">onTap</span>, </span></li>
+<li><span class="parameter" id="-param-submenu"><span class="type-annotation"><a href="../../menu_bar/SubMenu-class.html">SubMenu</a>?</span> <span class="parameter-name">submenu</span>, </span></li>
 <li><span class="parameter" id="-param-icon"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/widgets/Widget-class.html">Widget</a>?</span> <span class="parameter-name">icon</span>, </span></li>
+<li><span class="parameter" id="-param-shortcut"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/widgets/MenuSerializableShortcut-mixin.html">MenuSerializableShortcut</a>?</span> <span class="parameter-name">shortcut</span>, </span></li>
 <li><span class="parameter" id="-param-shortcutText"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">shortcutText</span>, </span></li>
-<li><span class="parameter" id="-param-submenu"><span class="type-annotation"><a href="../../menu_bar/SubMenu-class.html">SubMenu</a>?</span> <span class="parameter-name">submenu</span>}</span></li>
+<li><span class="parameter" id="-param-shortcutStyle"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/painting/TextStyle-class.html">TextStyle</a></span> <span class="parameter-name">shortcutStyle</span> = <span class="default-value">const TextStyle(fontWeight: FontWeight.normal, color: Colors.grey)</span>}</span></li>
 </ol>)
     </section>
 
     
 <section class="desc markdown">
   <p>A <a href="../../menu_bar/MenuButton-class.html">MenuButton</a> is displayed as a button in the menus and submenus.</p>
-<p>The following 2 fields are necessary: <code>onTap</code> and <code>text</code>.</p>
-<p>Assign a Function to the <code>onTap</code> field. This function will be executed when pressing the button. Set to <code>null</code> to disable the button. Though keep in mind to implement a custom solution for disabled colors in case you want disabled colors.</p>
+<p>The following field is necessary: <code>text</code>.</p>
 <p>Assign a Text widget to the <code>text</code> field. This text is displayed as the button text. You can also wrap your assigned Text around a Padding widget.</p>
 <p><strong>Optional fields</strong></p>
-<p>To open a submenu on press, assign a SubMenu widget to the <code>submenu</code> field. You can now set the <code>onTap</code> field to an empty function <code>() {}</code> if you don't want to execute a function when opening and closing the submenu.</p>
+<p>To open a submenu on press, assign a SubMenu widget to the <code>submenu</code> field. <strong>IMPORTANT</strong>: The <code>onTap</code> field has to be <code>null</code> if <code>submenu</code> is set.</p>
 <p>To display a leading icon, assign an Icon widget to the <code>icon</code> field.</p>
-<p>To display a trailing shortcut text, assign a String to the <code>shortcutText</code> field. This is just a text, not a Shortcut system. You can style this text in the <code>menuButtonStyle</code> of your MenuBar widget (field: <code>shortcutTextStyle</code>).</p>
-<p>You can style the <a href="../../menu_bar/MenuButton-class.html">MenuButton</a> widgets in the <code>menuButtonStyle</code> field of your MenuBar widget.</p>
+<p>To trigger the <code>onTap</code> with a keyboard shortcut, assign a <code>MenuSerializableShortcut</code> to the <code>shortcut</code> field. For example: <code>SingleActivator(LogicalKeyboardKey.keyS, control: true)</code></p>
+<p>To display a trailing shortcut text, assign a String to the <code>shortcutText</code> field. You can style this text in the <code>shortcutTextStyle</code> field.</p>
+<p>You can style the <a href="../../menu_bar/MenuButton-class.html">MenuButton</a> widgets in the <code>menuButtonStyle</code> field of your MenuBarWidget.</p>
 </section>
 
 
@@ -81,13 +84,18 @@
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">const MenuButton({
-  &#47;&#47;&#47; Assign a Text widget to the [text] field. This text is displayed as the button text. You can also wrap your assigned Text around a Padding widget.
-  required super.onTap,
   required Widget text,
-  super.icon,
-  super.shortcutText,
+  super.onTap,
   super.submenu,
-}) : super(text: text);</code></pre>
+  super.icon,
+  super.shortcut,
+  super.shortcutText,
+  TextStyle shortcutStyle =
+      const TextStyle(fontWeight: FontWeight.normal, color: Colors.grey),
+}) : super(
+          menuEntryType: MenuEntryType.MenuButton,
+          text: text,
+          shortcutStyle: shortcutStyle);</code></pre>
 </section>
 
 
@@ -119,14 +127,16 @@
           <a href="../../menu_bar/MenuButton-class.html#instance-properties">Properties</a>
         </li>
           <li class="inherited"><a href="../../menu_bar/MenuButton/color.html">color</a></li>
-          <li class="inherited"><a href="../../menu_bar/MenuButton/divider.html">divider</a></li>
           <li class="inherited"><a href="../../menu_bar/MenuButton/endIndent.html">endIndent</a></li>
           <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/hashCode.html">hashCode</a></li>
           <li class="inherited"><a href="../../menu_bar/MenuButton/height.html">height</a></li>
           <li class="inherited"><a href="../../menu_bar/MenuButton/icon.html">icon</a></li>
           <li class="inherited"><a href="../../menu_bar/MenuButton/indent.html">indent</a></li>
+          <li class="inherited"><a href="../../menu_bar/MenuButton/menuEntryType.html">menuEntryType</a></li>
           <li class="inherited"><a href="../../menu_bar/MenuButton/onTap.html">onTap</a></li>
           <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></li>
+          <li class="inherited"><a href="../../menu_bar/MenuButton/shortcut.html">shortcut</a></li>
+          <li class="inherited"><a href="../../menu_bar/MenuButton/shortcutStyle.html">shortcutStyle</a></li>
           <li class="inherited"><a href="../../menu_bar/MenuButton/shortcutText.html">shortcutText</a></li>
           <li class="inherited"><a href="../../menu_bar/MenuButton/submenu.html">submenu</a></li>
           <li class="inherited"><a href="../../menu_bar/MenuButton/text.html">text</a></li>
@@ -154,7 +164,7 @@
 <footer>
   <span class="no-break">
     menu_bar
-      0.3.0
+      0.5.0
   </span>
 
   
