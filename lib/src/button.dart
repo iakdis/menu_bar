@@ -17,7 +17,7 @@ class BarButton extends MenuEntry {
     required Widget text,
     required SubMenu submenu,
   }) : super(
-          menuEntryType: MenuEntryType.BarButton,
+          menuEntryType: MenuEntryType.barButton,
           text: text,
           submenu: submenu,
         );
@@ -51,7 +51,7 @@ class MenuButton extends MenuEntry {
     TextStyle shortcutStyle =
         const TextStyle(fontWeight: FontWeight.normal, color: Colors.grey),
   }) : super(
-            menuEntryType: MenuEntryType.MenuButton,
+            menuEntryType: MenuEntryType.menuButton,
             text: text,
             shortcutStyle: shortcutStyle);
 }

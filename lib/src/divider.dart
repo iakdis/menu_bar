@@ -12,7 +12,7 @@ class MenuDivider extends MenuEntry {
     double? endIndent,
     Color? color,
   }) : super(
-          menuEntryType: MenuEntryType.MenuDivider,
+          menuEntryType: MenuEntryType.menuDivider,
           height: height,
           thickness: thickness,
           indent: indent,

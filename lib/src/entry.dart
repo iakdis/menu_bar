@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import '../menu_bar.dart';
 
 enum MenuEntryType {
-  BarButton,
-  MenuButton,
-  MenuDivider,
+  barButton,
+  menuButton,
+  menuDivider,
 }
 
 class MenuEntry {
@@ -44,7 +44,7 @@ class MenuEntry {
     required ButtonStyle menuButtonStyle,
   }) {
     Widget buildSelection(MenuEntry entries) {
-      if (entries.menuEntryType == MenuEntryType.MenuDivider) {
+      if (entries.menuEntryType == MenuEntryType.menuDivider) {
         return Divider(
           height: entries.height,
           thickness: entries.thickness,
@@ -56,7 +56,7 @@ class MenuEntry {
 
       if (entries.submenu != null) {
         return SubmenuButton(
-          style: entries.menuEntryType == MenuEntryType.BarButton
+          style: entries.menuEntryType == MenuEntryType.barButton
               ? barButtonStyle
               : menuButtonStyle,
           menuChildren: MenuEntry.build(
