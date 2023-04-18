@@ -23,7 +23,7 @@
 
 A customizable application menu bar with submenus for your Flutter Desktop apps.
 
-The menu bar is rendered inside your Flutter app (i.e. not as a native menu bar like in macOS). Native menu bars (at least for macOS) are currently in development by Flutter, see [#23600](https://github.com/flutter/flutter/issues/23600). In the future, a native option in this plugin could get added.
+The menu bar is rendered inside your Flutter app (i.e. not as a native menu bar like in macOS). Native menu bars (at least for macOS) are since lately supported by Flutter. In the future, a native option in this package could get added.
 
 ## Table of Contents
 - [Preview](#preview)
@@ -48,8 +48,9 @@ The menu bar is rendered inside your Flutter app (i.e. not as a native menu bar 
 - Nested submenus support
 - Dividers to structure submenus
 - Icon in submenu buttons (optional)
+- Keyboard shortcuts for button functions
 - Shortcut text in submenu buttons (optional)
-- Open menus and submenus on hover or on click
+- Open menus and submenus on hover
 - Fully customizable
 - Easy to implement
 - Rich widget documentation
@@ -61,16 +62,11 @@ First, download and import the package:
 import 'package:menu_bar/menu_bar.dart';
 ```
 
-Secondly, hide the MenuBar and MenuStyle widgets from the material package:
-```dart
-import 'package:flutter/material.dart' hide MenuBar hide MenuStyle;
-```
-
 ## 1. Integrate the menu bar
 
-Wrap your application around the MenuBar widget and add an empty list to `barButtons` so that you have assigned the 2 necessary fields. The `child` is your application under the menu bar:
+Wrap your application around the MenuBarWidget widget and add an empty list to `barButtons` so that you have assigned the 2 necessary fields. The `child` is your application under the menu bar:
 ```dart
-MenuBar(
+MenuBarWidget(
     barButtons: [],
     child: Scaffold(...),
 ),
@@ -84,7 +80,7 @@ You should now see an empty menu bar above your application (see picture below).
 
 To add buttons with menus, use the following widget structure:
 ```
-MenuBar
+MenuBarWidget
     BarButton
         SubMenu
             MenuButton
@@ -102,7 +98,7 @@ In this example, we will add the following menu bar:
 <img src="https://raw.githubusercontent.com/iakmds/menu_bar/master/doc/assets/step2.png" alt="Screenshot of step 2" width="500">
 
 ```dart
-MenuBar(
+MenuBarWidget(
     // The buttons in this List are displayed as the buttons on the bar itself
     barButtons: [
         BarButton(
@@ -158,16 +154,7 @@ For a complete example, check out [example.dart](https://github.com/iakmds/menu_
 ### Bar customization
 <img src="https://raw.githubusercontent.com/iakmds/menu_bar/master/doc/assets/bar.png" alt="Bar" width="500">
 
-| Property              | Type              | Default                               | Description                             |
-|-----------------------|-------------------|---------------------------------------|-----------------------------------------|
-| height                | double            | 28.0                                  | Height of the menu bar                  |
-| mainAxisAlignment     | MainAxisAlignment | MainAxisAlignment.start               | Horizontal alignment of the bar buttons |
-| backgroundColor       | Color             | Color(0xFF424242)                     | Background color of the bar             |
-| gap                   | double            | 0.0                                   | Gap between the bar buttons             |
-| padding               | EdgeInsets        | EdgeInsets.symmetric(horizontal: 0.0) | Padding inside the bar row              |
-| closeMenuOnHoverLeave | bool              | true                                  | Close the all menus on hover leave      |
-| openMenuOnHover       | bool              | false                                 | Open the bar button menus on hover      |
-| closeMenuOnHoverDelay | Duration          | Duration(milliseconds: 400)           | Close duration on hover leave           |
+See class `MenuStyle` in [https://api.flutter.dev/flutter/material/MenuStyle-class.html](https://api.flutter.dev/flutter/material/MenuStyle-class.html).
 
 ---
 
@@ -175,22 +162,7 @@ For a complete example, check out [example.dart](https://github.com/iakmds/menu_
 
 <img src="https://raw.githubusercontent.com/iakmds/menu_bar/master/doc/assets/barButton.png" alt="Bar button" width="500">
 
-| Property        | Type       | Default                               | Description                    |
-|-----------------|------------|---------------------------------------|--------------------------------|
-| backgroundColor | Color      | Colors.transparent                    | Bar button background color    |
-| padding         | EdgeInsets | EdgeInsets.symmetric(horizontal: 6.0) | Padding inside the bar buttons |
-
----
-
-### Menu and submenu customization
-<img src="https://raw.githubusercontent.com/iakmds/menu_bar/master/doc/assets/submenu.png" alt="Submenu" width="500">
-
-| Property            | Type       | Default                             | Description                                |
-|---------------------|------------|-------------------------------------|--------------------------------------------|
-| width               | double     | 200.0                               | Width of the menus and submenus            |
-| openSubmenusOnHover | bool       | true                                | Open the submenus on hover                 |
-| backgroundColor     | Color      | Colors.white                        | Background color of the menus and submenus |
-| padding             | EdgeInsets | EdgeInsets.symmetric(vertical: 8.0) | Padding inside the menus and submenus      |
+See class `ButtonStyle` in [https://api.flutter.dev/flutter/material/ButtonStyle-class.html](https://api.flutter.dev/flutter/material/ButtonStyle-class.html).
 
 ---
 
@@ -198,15 +170,7 @@ For a complete example, check out [example.dart](https://github.com/iakmds/menu_
 
 <img src="https://raw.githubusercontent.com/iakmds/menu_bar/master/doc/assets/submenuButton.png" alt="Submenu button" width="500">
 
-| Property          | Type       | Default                                       | Description                                                               |
-|-------------------|------------|-----------------------------------------------|---------------------------------------------------------------------------|
-| closeMenuOnClick  | bool       | true                                          | Close the all menus on a menu button click                                |
-| backgroundColor   | Color      | Colors.white                                  | Background color of the submenu buttons                                   |
-| height            | double     | 28.0                                          | Height of the submenu buttons                                             |
-| padding           | EdgeInsets | EdgeInsets.symmetric(horizontal: 12.0)        | Padding inside the submenu buttons                                        |
-| shortcutTextStyle | TextStyle  | TextStyle(fontSize: 15.0, color: Colors.grey) | Shortcut text style                                                       |
-| showSubmenuIcon   | bool       | true                                          | Show a submenu icon if a submenu is assigned                              |
-| submenuIcon       | Widget     | Icon(Icons.keyboard_arrow_right)              | Set the submenu icon if showSubmenuIcon is true and a submenu is assigned |
+See class `ButtonStyle` in [https://api.flutter.dev/flutter/material/ButtonStyle-class.html](https://api.flutter.dev/flutter/material/ButtonStyle-class.html).
 
 # Contact
 
