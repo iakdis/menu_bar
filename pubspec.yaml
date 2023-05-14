@@ -2,6 +2,9 @@ name: menu_bar
 description: A customizable application menu bar with submenus for your Flutter Desktop apps.
 version: 0.5.1
 repository: https://github.com/iakmds/menu_bar
+topics:
+ - desktop
+ - menu
 
 environment:
   sdk: '>=2.18.6 <4.0.0'
