@@ -166,6 +166,13 @@ See class `ButtonStyle` in [https://api.flutter.dev/flutter/material/ButtonStyle
 
 ---
 
+### Menu and submenu customization
+<img src="https://raw.githubusercontent.com/iakmds/menu_bar/master/doc/assets/submenu.png" alt="Submenu" width="500">
+
+See class `MenuStyle` in [https://api.flutter.dev/flutter/material/MenuStyle-class.html](https://api.flutter.dev/flutter/material/MenuStyle-class.html).
+
+---
+
 ### Menu and submenu buttons customization
 
 <img src="https://raw.githubusercontent.com/iakmds/menu_bar/master/doc/assets/submenuButton.png" alt="Submenu button" width="500">

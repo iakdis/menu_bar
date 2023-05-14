@@ -167,6 +167,16 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      // Style the menus. Hover over [MenuStyle] for all the options
+      theme: ThemeData(
+        menuTheme: const MenuThemeData(
+          style: MenuStyle(
+            padding:
+                MaterialStatePropertyAll(EdgeInsets.symmetric(vertical: 16.0)),
+          ),
+        ),
+      ),
+
       home: MenuBarWidget(
         // Add a list of [BarButton]. The buttons in this List are
         // displayed as the buttons on the bar itself
@@ -188,7 +198,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
         // Style the menu and submenu buttons. Hover over [ButtonStyle] for all the options
         menuButtonStyle: const ButtonStyle(
-          minimumSize: MaterialStatePropertyAll(Size.fromHeight(28.0)),
+          minimumSize: MaterialStatePropertyAll(Size.fromHeight(36.0)),
+          padding: MaterialStatePropertyAll(
+              EdgeInsets.symmetric(horizontal: 12.0, vertical: 6.0)),
         ),
 
         // Enable or disable the bar
