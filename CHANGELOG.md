@@ -1,3 +1,7 @@
+## 0.5.2
+
+- Add topics to pubspec.yaml
+
 ## 0.5.1
 
 - Update example to feature menu/submenu customization (via `MenuStyle` in `MenuThemeData` in `ThemeData`)
