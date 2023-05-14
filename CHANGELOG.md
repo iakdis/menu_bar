@@ -1,3 +1,7 @@
+## 0.5.1
+
+- Update example to feature menu/submenu customization (via `MenuStyle` in `MenuThemeData` in `ThemeData`)
+
 ## 0.5.0
 
 - BREAKING: Renamed class `MenuBar` to `MenuBarWidget`. Now you don't need to write `import 'package:flutter/material.dart' hide MenuBar hide MenuStyle` in your Material package import
