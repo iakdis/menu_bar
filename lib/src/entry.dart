@@ -59,6 +59,7 @@ class MenuEntry {
           style: entries.menuEntryType == MenuEntryType.barButton
               ? barButtonStyle
               : menuButtonStyle,
+          leadingIcon: entries.icon,
           menuChildren: MenuEntry.build(
             entries: entries.submenu!.menuItems,
             barButtonStyle: barButtonStyle,
