@@ -1,3 +1,7 @@
+## 0.5.3
+
+- Fix: Display the icon in menu button when having submenu
+
 ## 0.5.2
 
 - Add topics to pubspec.yaml
