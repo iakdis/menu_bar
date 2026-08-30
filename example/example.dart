@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter/services.dart';
 import 'package:menu_bar/menu_bar.dart';
 
@@ -17,18 +17,17 @@ class _MyHomePageState extends State<MyHomePage> {
   List<BarButton> _menuBarButtons() {
     return [
       BarButton(
-        text: const Text(
-          'File',
-          style: TextStyle(color: Colors.white),
-        ),
+        text: const Text('File', style: TextStyle(color: Colors.white)),
         submenu: SubMenu(
           menuItems: [
             MenuButton(
               onTap: () => print('Save'),
               text: const Text('Save'),
               shortcutText: 'Ctrl+S',
-              shortcut:
-                  const SingleActivator(LogicalKeyboardKey.keyS, control: true),
+              shortcut: const SingleActivator(
+                LogicalKeyboardKey.keyS,
+                control: true,
+              ),
             ),
             MenuButton(
               onTap: () {},
@@ -36,14 +35,8 @@ class _MyHomePageState extends State<MyHomePage> {
               shortcutText: 'Ctrl+Shift+S',
             ),
             const MenuDivider(),
-            MenuButton(
-              onTap: () {},
-              text: const Text('Open File'),
-            ),
-            MenuButton(
-              onTap: () {},
-              text: const Text('Open Folder'),
-            ),
+            MenuButton(onTap: () {}, text: const Text('Open File')),
+            MenuButton(onTap: () {}, text: const Text('Open Folder')),
             const MenuDivider(),
             MenuButton(
               text: const Text('Preferences'),
@@ -95,10 +88,7 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       BarButton(
-        text: const Text(
-          'Edit',
-          style: TextStyle(color: Colors.white),
-        ),
+        text: const Text('Edit', style: TextStyle(color: Colors.white)),
         submenu: SubMenu(
           menuItems: [
             MenuButton(
@@ -137,21 +127,12 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       BarButton(
-        text: const Text(
-          'Help',
-          style: TextStyle(color: Colors.white),
-        ),
+        text: const Text('Help', style: TextStyle(color: Colors.white)),
         submenu: SubMenu(
           menuItems: [
-            MenuButton(
-              onTap: () {},
-              text: const Text('Check for updates'),
-            ),
+            MenuButton(onTap: () {}, text: const Text('Check for updates')),
             const MenuDivider(),
-            MenuButton(
-              onTap: () {},
-              text: const Text('View License'),
-            ),
+            MenuButton(onTap: () {}, text: const Text('View License')),
             const MenuDivider(),
             MenuButton(
               onTap: () {},
@@ -171,8 +152,9 @@ class _MyHomePageState extends State<MyHomePage> {
       theme: ThemeData(
         menuTheme: const MenuThemeData(
           style: MenuStyle(
-            padding:
-                MaterialStatePropertyAll(EdgeInsets.symmetric(vertical: 16.0)),
+            padding: WidgetStatePropertyAll(
+              EdgeInsets.symmetric(vertical: 16.0),
+            ),
           ),
         ),
       ),
@@ -184,23 +166,25 @@ class _MyHomePageState extends State<MyHomePage> {
 
         // Style the menu bar itself. Hover over [MenuStyle] for all the options
         barStyle: const MenuStyle(
-          padding: MaterialStatePropertyAll(EdgeInsets.zero),
-          backgroundColor: MaterialStatePropertyAll(Color(0xFF2b2b2b)),
-          maximumSize: MaterialStatePropertyAll(Size(double.infinity, 28.0)),
+          padding: WidgetStatePropertyAll(EdgeInsets.zero),
+          backgroundColor: WidgetStatePropertyAll(Color(0xFF2b2b2b)),
+          maximumSize: WidgetStatePropertyAll(Size(double.infinity, 28.0)),
         ),
 
         // Style the menu bar buttons. Hover over [ButtonStyle] for all the options
         barButtonStyle: const ButtonStyle(
-          padding:
-              MaterialStatePropertyAll(EdgeInsets.symmetric(horizontal: 6.0)),
-          minimumSize: MaterialStatePropertyAll(Size(0.0, 32.0)),
+          padding: WidgetStatePropertyAll(
+            EdgeInsets.symmetric(horizontal: 6.0),
+          ),
+          minimumSize: WidgetStatePropertyAll(Size(0.0, 32.0)),
         ),
 
         // Style the menu and submenu buttons. Hover over [ButtonStyle] for all the options
         menuButtonStyle: const ButtonStyle(
-          minimumSize: MaterialStatePropertyAll(Size.fromHeight(36.0)),
-          padding: MaterialStatePropertyAll(
-              EdgeInsets.symmetric(horizontal: 12.0, vertical: 6.0)),
+          minimumSize: WidgetStatePropertyAll(Size.fromHeight(36.0)),
+          padding: WidgetStatePropertyAll(
+            EdgeInsets.symmetric(horizontal: 12.0, vertical: 6.0),
+          ),
         ),
 
         // Enable or disable the bar
@@ -208,16 +192,11 @@ class _MyHomePageState extends State<MyHomePage> {
 
         // Set the child, i.e. the application under the menu bar
         child: Scaffold(
-          appBar: AppBar(
-            title: const Text('Menu Bar Example'),
-          ),
+          appBar: AppBar(title: const Text('Menu Bar Example')),
           body: const Center(
             child: Text(
               'My application',
-              style: TextStyle(
-                fontSize: 32.0,
-                fontWeight: FontWeight.bold,
-              ),
+              style: TextStyle(fontSize: 32.0, fontWeight: FontWeight.bold),
             ),
           ),
         ),

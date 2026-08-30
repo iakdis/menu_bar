@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import '../menu_bar.dart';
 import 'entry.dart';
 
@@ -58,8 +58,9 @@ class _MenuBarWidgetState extends State<MenuBarWidget> {
   List<BarButton> _entries() {
     _shortcutsEntry?.dispose();
     if (MenuEntry.shortcuts(widget.barButtons).isNotEmpty) {
-      _shortcutsEntry = ShortcutRegistry.of(context)
-          .addAll(MenuEntry.shortcuts(widget.barButtons));
+      _shortcutsEntry = ShortcutRegistry.of(
+        context,
+      ).addAll(MenuEntry.shortcuts(widget.barButtons));
     }
 
     return widget.barButtons;

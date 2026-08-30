@@ -1,3 +1,8 @@
+## 1.0.0
+
+- Migrates to `material_ui`.
+- Updates minimum supported SDK version to Flutter 3.44/Dart 3.12.
+
 ## 0.5.3
 
 - Fix: Display the icon in menu button when having submenu

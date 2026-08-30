@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'entry.dart';
 
 class MenuDivider extends MenuEntry {
@@ -6,23 +5,18 @@ class MenuDivider extends MenuEntry {
   ///
   /// All the fields correspond to a regular Divider widget. Assign the fields like you would for a Divider widget.
   const MenuDivider({
-    double height = 12.0,
-    double? thickness,
-    double? indent,
-    double? endIndent,
-    Color? color,
+    double super.height = 12.0,
+    super.thickness,
+    super.indent,
+    super.endIndent,
+    super.color,
   }) : super(
-          menuEntryType: MenuEntryType.menuDivider,
-          height: height,
-          thickness: thickness,
-          indent: indent,
-          endIndent: endIndent,
-          color: color,
-          text: null,
-          icon: null,
-          shortcut: null,
-          shortcutText: null,
-          onTap: null,
-          submenu: null,
-        );
+         menuEntryType: MenuEntryType.menuDivider,
+         text: null,
+         icon: null,
+         shortcut: null,
+         shortcutText: null,
+         onTap: null,
+         submenu: null,
+       );
 }

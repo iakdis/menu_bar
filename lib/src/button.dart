@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 import '../menu_bar.dart';
 import 'entry.dart';
@@ -13,14 +13,12 @@ class BarButton extends MenuEntry {
   /// Assign a SubMenu to the [submenu] field. This submenu is the menu that is opened on when tapping this button.
   ///
   /// You can style the [BarButton] widgets in the `barButtonStyle` field of your MenuBarWidget.
-  const BarButton({
-    required Widget text,
-    required SubMenu submenu,
-  }) : super(
-          menuEntryType: MenuEntryType.barButton,
-          text: text,
-          submenu: submenu,
-        );
+  const BarButton({required Widget text, required SubMenu submenu})
+    : super(
+        menuEntryType: MenuEntryType.barButton,
+        text: text,
+        submenu: submenu,
+      );
 }
 
 class MenuButton extends MenuEntry {
@@ -48,10 +46,13 @@ class MenuButton extends MenuEntry {
     super.icon,
     super.shortcut,
     super.shortcutText,
-    TextStyle shortcutStyle =
-        const TextStyle(fontWeight: FontWeight.normal, color: Colors.grey),
+    TextStyle shortcutStyle = const TextStyle(
+      fontWeight: FontWeight.normal,
+      color: Colors.grey,
+    ),
   }) : super(
-            menuEntryType: MenuEntryType.menuButton,
-            text: text,
-            shortcutStyle: shortcutStyle);
+         menuEntryType: MenuEntryType.menuButton,
+         text: text,
+         shortcutStyle: shortcutStyle,
+       );
 }
