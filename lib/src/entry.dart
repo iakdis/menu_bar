@@ -1,11 +1,7 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import '../menu_bar.dart';
 
-enum MenuEntryType {
-  barButton,
-  menuButton,
-  menuDivider,
-}
+enum MenuEntryType { barButton, menuButton, menuDivider }
 
 class MenuEntry {
   const MenuEntry({
@@ -22,8 +18,10 @@ class MenuEntry {
     this.indent,
     this.endIndent,
     this.color,
-  }) : assert(submenu == null || onTap == null,
-            'onTap is ignored if submenu is provided');
+  }) : assert(
+         submenu == null || onTap == null,
+         'onTap is ignored if submenu is provided',
+       );
   final MenuEntryType menuEntryType;
   final Widget? text;
   final Widget? icon;
@@ -83,7 +81,8 @@ class MenuEntry {
   }
 
   static Map<MenuSerializableShortcut, Intent> shortcuts(
-      List<MenuEntry> selections) {
+    List<MenuEntry> selections,
+  ) {
     final Map<MenuSerializableShortcut, Intent> result =
         <MenuSerializableShortcut, Intent>{};
     for (final MenuEntry selection in selections) {
